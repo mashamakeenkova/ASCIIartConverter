@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class AsciiConverter {
 
-	public static final int MAX_SIZE = 100;
+	public static final int MAX_SIZE = 100;  //size to which input image is scaled 
 	BufferedImage img;
 	BufferedImage imgScaled;
 	PrintWriter printie;
@@ -24,7 +24,7 @@ public class AsciiConverter {
 
 	public static void main(String[] args) throws IOException {
 		AsciiConverter image = new AsciiConverter();
-		clearFile(); 
+		clearFile("OUTPUT FILE"); 
 		image.toGrayscale("INPUT FILE"); // file that is read
 	}
 
@@ -41,7 +41,6 @@ public class AsciiConverter {
 				double green = col.getGreen() * 0.587;
 				double blue = col.getBlue() * 0.114;
 				int grey = (int) ((int) red + green + blue);
-				// Color greyCol = new Color(grey); //this would be the grey scale value
 				print(asciify(grey));
 			}
 			try {
@@ -109,8 +108,8 @@ public class AsciiConverter {
 			writie.flush();
 	}
 	
-	public static void clearFile() throws IOException {  //removes any content form output file 
-		FileWriter writie2 = new FileWriter("OUTPUT FILE", false); 
+	public static void clearFile(String filename) throws IOException {  //removes any content form output file 
+		FileWriter writie2 = new FileWriter(filename, false); 
 		PrintWriter printie2 = new PrintWriter(writie2, false); 
 		printie2.flush(); 
 		printie2.close(); 
