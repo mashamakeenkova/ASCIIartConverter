@@ -1,2 +1,2 @@
-# ASCIIaerConverter
+# ASCIIartConverter
 Image to ASCII art converter 
