@@ -19,7 +19,7 @@ public class AsciiConverter {
 
 	public AsciiConverter() {
 		try {
-			printie = new PrintWriter(writie = new FileWriter("ASCII", true));
+			printie = new PrintWriter(writie = new FileWriter("NAME OF OUTPUT FILE", true));
 			// printie = new PrintWriter(System.out); //print to console
 		} catch (IOException exc) { // change to IOException when working with file
 			System.out.println(exc);
@@ -28,7 +28,8 @@ public class AsciiConverter {
 
 	public static void main(String[] args) {
 		AsciiConverter image = new AsciiConverter();
-		image.toGrayscale("images/metal.jpg"); // file that is read
+		clearFile(); 
+		image.toGrayscale("NAME OF INPUT FILE"); // file that is read
 	}
 
 	public void toGrayscale(String image) { // find grey scale value of a pixel and print appropriate character
@@ -118,6 +119,14 @@ public class AsciiConverter {
 			System.out.println(myExc);
 		}
 
+	}
+	
+	public static void clearFile() throws IOException {
+		FileWriter writie2 = new FileWriter("NAME OF OUTPUT FILE", false); 
+		PrintWriter printie2 = new PrintWriter(writie2, false); 
+		printie2.flush(); 
+		printie2.close(); 
+		writie2.close(); 
 	}
 
 }
