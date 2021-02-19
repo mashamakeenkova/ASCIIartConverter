@@ -17,13 +17,9 @@ public class AsciiConverter {
 	PrintWriter printie;
 	FileWriter writie;
 
-	public AsciiConverter() {
-		try {
+	public AsciiConverter() throws IOException {
 			printie = new PrintWriter(writie = new FileWriter("OUTPUT FILE", true));
 			// printie = new PrintWriter(System.out); //print to console
-		} catch (IOException exc) { // change to IOException when working with file
-			System.out.println(exc);
-		}
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -32,12 +28,9 @@ public class AsciiConverter {
 		image.toGrayscale("INPUT FILE"); // file that is read
 	}
 
-	public void toGrayscale(String image) { // find grey scale value of a pixel and print appropriate character
-		try {
-			img = ImageIO.read(new File(image));
-		} catch (IOException myException) {
-			System.out.println(myException);
-		}
+	public void toGrayscale(String image) throws IOException { // find grey scale value of a pixel and print appropriate character
+		img = ImageIO.read(new File(image));
+			
 		imgScaled = scaleImage(img);
 		int h = imgScaled.getHeight();
 		int w = imgScaled.getWidth();
@@ -110,15 +103,10 @@ public class AsciiConverter {
 		return s;
 	}
 
-	public void print(String s) {
-		try {
+	public void print(String s) throws IOException {
 			printie.write(s);
 			printie.flush();
 			writie.flush();
-		} catch (Exception myExc) {
-			System.out.println(myExc);
-		}
-
 	}
 	
 	public static void clearFile() throws IOException {  //removes any content form output file 
